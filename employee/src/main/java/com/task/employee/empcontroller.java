@@ -2,22 +2,19 @@ package com.task.employee;
 
 import com.task.employee.DTO.EmployeeDTO;
 import com.task.employee.Entity.Employee;
-import com.task.employee.Exception.GeneratedException;
 import com.task.employee.Service.ServiceEmployee;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.rmi.ServerException;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("employees")
-public class empcontroller{
+public class empcontroller {
 
     @Autowired
     private ModelMapper modelMapper;
@@ -28,20 +25,21 @@ public class empcontroller{
         super();
         this.serviceEmployee = serviceEmployee;
     }
+
     @GetMapping("findAll")
-    public ResponseEntity<List<Employee>> getEmployees(){
+    public ResponseEntity<List<Employee>> getEmployees() {
         return serviceEmployee.findAll();
     }
 
     @RequestMapping("id/{id}")
-    public Optional<Employee> getEmployeeByid(@PathVariable Integer id){
+    public Optional<Employee> getEmployeeByid(@PathVariable Integer id) {
         return serviceEmployee.findByID(id);
     }
 
 
     @DeleteMapping("delete/{id}")
     public String deleteEmployee(@PathVariable Integer id) {
-        System.out.print("ID FROM FRONTEND"+ id);
+        System.out.print("ID FROM FRONTEND" + id);
         if (serviceEmployee.employeeExists(id)) {
             serviceEmployee.deleteEmployee(id);
             return "Employee deleted successfully.";
@@ -64,6 +62,13 @@ public class empcontroller{
         return ResponseEntity.ok().body(employeeResponse);
     }
 
+    @GetMapping("findemp")
+    public List<EmployeeDTO> getEmployeeinfo() {
+
+        return serviceEmployee.getAllemp().stream().map(employee -> modelMapper.map(employee, EmployeeDTO.class))
+                .collect(Collectors.toList());
+
+
 //    @PostMapping("/employee")
 //    @ResponseStatus(HttpStatus.CREATED)
 //    public ResponseEntity<Employee> addEmployee( @RequestBody Employee employee) throws GeneratedException {
@@ -83,4 +88,5 @@ public class empcontroller{
 //        return serviceEmployee.findByCompany_ID(Company_id);
 //    }
 
+    }
 }

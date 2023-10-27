@@ -1,6 +1,7 @@
 package com.task.employee.Service;
 
 import com.task.employee.DAO.EmployeeDAO;
+import com.task.employee.DTO.EmployeeDTO;
 import com.task.employee.Entity.Employee;
 import com.task.employee.Exception.GeneratedException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,7 +48,9 @@ public class ServiceEmployee {
       return employeeDAO.existsById(id);
     }
 
-
+    public List<Employee> getAllemp(){
+    return employeeDAO.findAll();
+}
 
 
     public Employee updateEmployee(Integer id, Employee employeeRequest) {
@@ -63,6 +67,8 @@ public class ServiceEmployee {
 
         return employeeDAO.save(employee);
     }
+
+
 
 //    public String addEmployee(Employee employee) {
 //        employeeDAO.save(employee);

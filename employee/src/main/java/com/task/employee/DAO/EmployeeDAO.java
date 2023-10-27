@@ -11,6 +11,7 @@ import java.util.List;
 @Repository
 public interface EmployeeDAO extends JpaRepository<Employee, Integer> {
     List<Employee> findAll();
+
 //
 //    @Query("SELECT e FROM Employees e WHERE e.Company_id = ?1")
 //    List<Employee> findByCompany_ID(Integer companyId);
