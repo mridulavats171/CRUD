@@ -70,24 +70,13 @@ public class ServiceEmployee {
 
 
 
-//    public String addEmployee(Employee employee) {
-//        employeeDAO.save(employee);
-//        return "success";
-//    }
-//    public ResponseEntity<Employee> addEmployee(Employee employee) {
-////        Employee employee1 = new Employee();
-////        employee1.setCompany_id(employee.getCompany_id());
-////        employee1.setSalary(employee.getSalary());
-////        employee1.setName(employee.getName());
-////        employee1.setId(employee.getId());
-////
-////        return new ResponseEntity<>(employeeDAO.save(employee1), HttpStatus.CREATED);
-////
+    public String addEmployee(Employee employee) {
+        employeeDAO.save(employee);
+        return "success";
+    }
 
-//    public List<Employee> findByCompany_ID(Integer CompanyId) {
-//        Employee employee= new Employee();
-//        employee.setCompany_id(CompanyId);
-//    }
-
+    public List<Employee> findByname(String name) {
+        return employeeDAO.findByname(name);
+    }
 
 }

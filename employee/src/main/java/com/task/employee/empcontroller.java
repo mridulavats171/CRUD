@@ -67,26 +67,16 @@ public class empcontroller {
 
         return serviceEmployee.getAllemp().stream().map(employee -> modelMapper.map(employee, EmployeeDTO.class))
                 .collect(Collectors.toList());
+    }
 
+      @PostMapping("employee")
+      public String addEmployee( @RequestBody Employee employee)  {
+        return serviceEmployee.addEmployee(employee);
+    }
 
-//    @PostMapping("/employee")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public ResponseEntity<Employee> addEmployee( @RequestBody Employee employee) throws GeneratedException {
-//        Employee employee1 = serviceEmployee.addEmployee(employee).getBody();
-//       if(employee1==null){
-//           throw new GeneratedException("");
-//    } else return new ResponseEntity<>(employee1, HttpStatus.CREATED);
-//    }
-//      @PostMapping("/employee")
-//      public String addEmployee( @RequestBody Employee employee)  {
-//        return serviceEmployee.addEmployee(employee);
-//
-//    }
-
-//    @RequestMapping("company/{company_id}")
-//    public List<Employee> findByCompanyID(@PathVariable Integer Company_id){
-//        return serviceEmployee.findByCompany_ID(Company_id);
-//    }
-
+    @RequestMapping("name/{name}")
+    public List<Employee> name(@PathVariable String name) {
+        return serviceEmployee.findByname(name);
     }
 }
+
