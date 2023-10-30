@@ -1,8 +1,7 @@
 package com.task.employee.Service;
 
-import com.task.employee.DAO.EmployeeDAO;
-import com.task.employee.DTO.EmployeeDTO;
-import com.task.employee.Entity.Employee;
+import com.task.employee.Repository.EmployeeRepo;
+import com.task.employee.Domain.Employee;
 import com.task.employee.Exception.GeneratedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -11,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,10 +17,10 @@ import java.util.Optional;
 public class ServiceEmployee {
 
     @Autowired
-    EmployeeDAO employeeDAO;
+    EmployeeRepo employeeRepo;
     public ResponseEntity<List<Employee>> findAll(){
         try{
-            return new ResponseEntity<>(employeeDAO.findAll(), HttpStatus.OK);
+            return new ResponseEntity<>(employeeRepo.findAll(), HttpStatus.OK);
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -31,32 +29,36 @@ public class ServiceEmployee {
 
 
     public Optional<Employee> findByID(Integer id) {
-        return employeeDAO.findById(id);
+        return employeeRepo.findById(id);
     }
 
     public String deleteEmployee(Integer id) {
-        try {
-            employeeDAO.deleteById(id);
-            return "Question deleted successfully.";
-        } catch (EmptyResultDataAccessException ex) {
+      try {
+          if (employeeRepo.existsById(id)) {
+              employeeRepo.deleteById(id);
+              return "Employee deleted successfully.";
+          } else {
+              return "failed";
+          }
+      } catch (EmptyResultDataAccessException ex) {
             return "Employee with ID " + id + " not found.";
         }
     }
 
     public boolean employeeExists(Integer id) {
 
-      return employeeDAO.existsById(id);
+      return employeeRepo.existsById(id);
     }
 
     public List<Employee> getAllemp(){
-    return employeeDAO.findAll();
+    return employeeRepo.findAll();
 }
 
 
     public Employee updateEmployee(Integer id, Employee employeeRequest) {
         Employee employee = null;
         try {
-            employee = employeeDAO.findById(id)
+            employee = employeeRepo.findById(id)
                     .orElseThrow(() -> new GeneratedException("Post id"));
         } catch (GeneratedException e) {
             throw new RuntimeException(e);
@@ -65,18 +67,18 @@ public class ServiceEmployee {
         employee.setCompany_id(employeeRequest.getCompany_id());
         employee.setName(employeeRequest.getName());
 
-        return employeeDAO.save(employee);
+        return employeeRepo.save(employee);
     }
 
 
 
     public String addEmployee(Employee employee) {
-        employeeDAO.save(employee);
+        employeeRepo.save(employee);
         return "success";
     }
 
     public List<Employee> findByname(String name) {
-        return employeeDAO.findByname(name);
+        return employeeRepo.findByname(name);
     }
 
 }
