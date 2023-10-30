@@ -56,10 +56,11 @@ public class EmpController {
         return serviceEmployee.addEmployee(employee);
     }
 
-    @RequestMapping("/{name}")
+    @RequestMapping("name/{name}")
     public List<Employee> name(@PathVariable String name) {
         return serviceEmployee.findByname(name);
     }
+
 
     @PutMapping("/{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable Integer id, @RequestBody Employee employee) throws GeneratedException {
