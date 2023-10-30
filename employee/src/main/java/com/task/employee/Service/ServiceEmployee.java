@@ -3,6 +3,7 @@ package com.task.employee.Service;
 import com.task.employee.Repository.EmployeeRepo;
 import com.task.employee.Domain.Employee;
 import com.task.employee.Exception.GeneratedException;
+import org.modelmapper.internal.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
@@ -54,25 +55,6 @@ public class ServiceEmployee {
     return employeeRepo.findAll();
 }
 
-
-    public Employee updateEmployee(Integer id, Employee employeeRequest) {
-        Employee employee = null;
-        try {
-            employee = employeeRepo.findById(id)
-                    .orElseThrow(() -> new GeneratedException("Post id"));
-        } catch (GeneratedException e) {
-            throw new RuntimeException(e);
-        }
-
-        employee.setCompany_id(employeeRequest.getCompany_id());
-        employee.setName(employeeRequest.getName());
-        employee.setDepartment_id(employeeRequest.getDepartment_id());
-
-        return employeeRepo.save(employee);
-    }
-
-
-
     public String addEmployee(Employee employee) {
         employeeRepo.save(employee);
         return "success";
@@ -82,4 +64,34 @@ public class ServiceEmployee {
         return employeeRepo.findByname(name);
     }
 
+    public ResponseEntity<Employee> updateEmployee(Integer id, Employee employeeRequest) throws GeneratedException {
+        Employee employee = null;
+            employee = employeeRepo.findById(id)
+                    .orElseThrow(() -> new GeneratedException("Post id"));
+
+        employee.setCompany_id(employeeRequest.getCompany_id());
+        employee.setName(employeeRequest.getName());
+        employee.setDepartment_id(employeeRequest.getDepartment_id());
+        employee.setProjects_id(employeeRequest.getProjects_id());
+        employee.setSalary(employeeRequest.getSalary());
+
+         employeeRepo.save(employee);
+         return ResponseEntity.ok().body(employee);
+    }
+
+//    public Employee updateEmployee(Integer id, Employee employeeRequest) {
+//        Employee employee = null;
+//        try {
+//            employee = employeeRepo.findById(id)
+//                    .orElseThrow(() -> new GeneratedException("Post id"));
+//        } catch (GeneratedException e) {
+//            throw new RuntimeException(e);
+//        }
+//
+//        employee.setCompany_id(employeeRequest.getCompany_id());
+//        employee.setName(employeeRequest.getName());
+//        employee.setDepartment_id(employeeRequest.getDepartment_id());
+//
+//        return employeeRepo.save(employee);
+//    }
 }

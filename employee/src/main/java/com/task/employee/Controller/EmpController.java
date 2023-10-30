@@ -3,6 +3,8 @@ package com.task.employee.Controller;
 import com.task.employee.Constant.URLMapping;
 import com.task.employee.DTO.EmployeeDTO;
 import com.task.employee.Domain.Employee;
+import com.task.employee.Exception.GeneratedException;
+import com.task.employee.Repository.EmployeeRepo;
 import com.task.employee.Service.ServiceEmployee;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,20 +44,6 @@ public class EmpController {
         return serviceEmployee.deleteEmployee(id);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable Integer id, @RequestBody EmployeeDTO employeeDTO) {
-
-        // convert DTO to Entity
-        Employee employeeRequest = modelMapper.map(employeeDTO, Employee.class);
-
-        Employee employee = serviceEmployee.updateEmployee(id, employeeRequest);
-
-        // entity to DTO
-        EmployeeDTO employeeResponse = modelMapper.map(employee, EmployeeDTO.class);
-
-        return ResponseEntity.ok().body(employeeResponse);
-    }
-
     @GetMapping(URLMapping.FINDEMP)
     public List<EmployeeDTO> getEmployeeinfo() {
 
@@ -72,5 +60,24 @@ public class EmpController {
     public List<Employee> name(@PathVariable String name) {
         return serviceEmployee.findByname(name);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable Integer id, @RequestBody Employee employee) throws GeneratedException {
+        return serviceEmployee.updateEmployee(id, employee);
+    }
+
+//    @PutMapping("/{id}")
+//    public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable Integer id, @RequestBody EmployeeDTO employeeDTO) {
+//
+//        // convert DTO to Entity
+//        Employee employeeRequest = modelMapper.map(employeeDTO, Employee.class);
+//
+//        Employee employee = serviceEmployee.updateEmployee(id, employeeRequest);
+//
+//        // entity to DTO
+//        EmployeeDTO employeeResponse = modelMapper.map(employee, EmployeeDTO.class);
+//
+//        return ResponseEntity.ok().body(employeeResponse);
+//    }
 }
 

@@ -2,8 +2,26 @@
 <project version="4">
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
+  </component>
+  <component name="DBNavigator.Project.DataExportManager">
+    <export-instructions>
+      <create-header value="true" />
+      <friendly-headers value="false" />
+      <quote-values-containing-separator value="true" />
+      <quote-all-values value="false" />
+      <value-separator value="" />
+      <begin-quote value="&quot;" />
+      <end-quote value="&quot;" />
+      <file-name value="" />
+      <file-location value="" />
+      <scope value="GLOBAL" />
+      <destination value="FILE" />
+      <format value="EXCEL" />
+      <charset value="UTF-8" />
+      <charset value="UTF-8" />
+    </export-instructions>
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
     <autoscroll-to-editor value="false" />
@@ -21,6 +39,9 @@
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="f477a84a-24b4-4fce-b071-8e2776c885cd" dataset="emp.employee_projects_table" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
