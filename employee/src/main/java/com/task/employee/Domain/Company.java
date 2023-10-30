@@ -1,7 +1,11 @@
-package com.task.employee.Entity;
+package com.task.employee.Domain;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "company")
 public class Company {

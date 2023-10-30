@@ -1,15 +1,13 @@
-package com.task.employee.DAO;
+package com.task.employee.Repository;
 
-import com.task.employee.Entity.Employee;
+import com.task.employee.Domain.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.Collection;
 import java.util.List;
 
 @Repository
-public interface EmployeeDAO extends JpaRepository<Employee, Integer> {
+public interface EmployeeRepo extends JpaRepository<Employee, Integer> {
     List<Employee> findAll();
 
     List<Employee> name(String name);
