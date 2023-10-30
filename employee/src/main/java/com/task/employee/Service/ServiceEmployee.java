@@ -66,6 +66,7 @@ public class ServiceEmployee {
 
         employee.setCompany_id(employeeRequest.getCompany_id());
         employee.setName(employeeRequest.getName());
+        employee.setDepartment_id(employeeRequest.getDepartment_id());
 
         return employeeRepo.save(employee);
     }

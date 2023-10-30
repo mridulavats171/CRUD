@@ -12,4 +12,6 @@ public class EmployeeDTO {
         private String name;
         private Integer company_id;
 
+        private int department_id;
+
 }

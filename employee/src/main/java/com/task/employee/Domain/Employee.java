@@ -1,5 +1,6 @@
 package com.task.employee.Domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -74,7 +75,8 @@ public class Employee {
     @Column(name = "salary")
     private Integer salary;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+
     private Company company;
 
     @ManyToOne
