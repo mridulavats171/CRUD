@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.9.4
+Created-By: Maven Jar Plugin 3.2.0
+Implementation-Title: ClassGraph
+Bundle-Description: The uber-fast, ultra-lightweight classpath and mod
+ ule scanner for JVM languages.
+Bundle-License: http://opensource.org/licenses/MIT
+Bundle-SymbolicName: io.github.classgraph.classgraph
+Implementation-Version: 4.8.83
+Bundle-Category: Utilities
+Bundle-ManifestVersion: 2
+Specification-Title: ClassGraph
+Bundle-Vendor: Luke Hutchison
+Import-Package: javax.xml.xpath,javax.xml.namespace,javax.xml.parsers,
+ org.w3c.dom,jdk.internal.misc;resolution:="optional",sun.misc;resolut
+ ion:="optional",sun.nio.ch;resolution:="optional"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+Export-Package: io.github.classgraph;version="4.8.83"
+Bundle-Name: ClassGraph
+Bundle-Version: 4.8.83
+Multi-Release: true
+Build-Jdk-Spec: 1.8
+Specification-Version: 4.8
+
