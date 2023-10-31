@@ -3,7 +3,6 @@ package com.task.employee.Service;
 import com.task.employee.Repository.EmployeeRepo;
 import com.task.employee.Domain.Employee;
 import com.task.employee.Exception.GeneratedException;
-import org.modelmapper.internal.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
@@ -11,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,11 +26,6 @@ public class ServiceEmployee {
             e.printStackTrace();
         }
     return new ResponseEntity<>(new ArrayList<>(), HttpStatus.BAD_REQUEST);
-    }
-
-
-    public Optional<Employee> findByID(Integer id) {
-        return employeeRepo.findById(id);
     }
 
     public String deleteEmployee(Integer id) {
@@ -60,10 +55,6 @@ public class ServiceEmployee {
         return "success";
     }
 
-    public List<Employee> findByname(String name) {
-        return employeeRepo.findByname(name);
-    }
-
     public ResponseEntity<Employee> updateEmployee(Integer id, Employee employeeRequest) throws GeneratedException {
         Employee employee = null;
             employee = employeeRepo.findById(id)
@@ -77,6 +68,24 @@ public class ServiceEmployee {
 
          employeeRepo.save(employee);
          return ResponseEntity.ok().body(employee);
+    }
+
+    public ResponseEntity<List<Employee>> findEmpById(int id) {
+        Optional<Employee> optionalEmployee = employeeRepo.findById(id);
+        if (optionalEmployee.isPresent()) {
+            return ResponseEntity.ok(Collections.singletonList(optionalEmployee.get()));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+
+    }
+    public ResponseEntity<List<Employee>> getEmpByName(String identifier) {
+        List<Employee> employees = employeeRepo.findByname(identifier);
+        if (employees.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return new ResponseEntity<>(employeeRepo.findByname(identifier), HttpStatus.OK);
+        }
     }
 
 //    public Employee updateEmployee(Integer id, Employee employeeRequest) {

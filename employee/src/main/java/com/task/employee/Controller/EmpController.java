@@ -8,8 +8,11 @@ import com.task.employee.Repository.EmployeeRepo;
 import com.task.employee.Service.ServiceEmployee;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -33,12 +36,6 @@ public class EmpController {
         return serviceEmployee.findAll();
     }
 
-    @RequestMapping("/{id}")
-    public Optional<Employee> getEmployeeByid(@PathVariable Integer id) {
-        return serviceEmployee.findByID(id);
-    }
-
-
     @DeleteMapping("/{id}")
     public String deleteEmployee(@PathVariable Integer id) {
         return serviceEmployee.deleteEmployee(id);
@@ -56,9 +53,16 @@ public class EmpController {
         return serviceEmployee.addEmployee(employee);
     }
 
-    @RequestMapping("name/{name}")
-    public List<Employee> name(@PathVariable String name) {
-        return serviceEmployee.findByname(name);
+    @GetMapping("/{identifier}")
+    public ResponseEntity<List<Employee>> getEmployee(@PathVariable String identifier, @RequestParam(value = "type", required = false) String type) {
+        if ("name".equals(type)) {
+            return serviceEmployee.getEmpByName(identifier);
+        } else if ("id".equals(type)) {
+                int id = Integer.parseInt(identifier);
+                return serviceEmployee.findEmpById(id);
+        } else {
+                return new ResponseEntity<>(new ArrayList<>(), HttpStatus.BAD_REQUEST);
+        }
     }
 
 
