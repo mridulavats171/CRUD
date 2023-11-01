@@ -3,6 +3,8 @@ package com.task.employee.Service;
 import com.task.employee.Domain.Company;
 import com.task.employee.Repository.RepoCompany;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,5 +24,15 @@ public class ServiceCompany {
     public String addCompany(Company company) {
         repoCompany.save(company);
         return "Sucess";
+    }
+
+    public ResponseEntity<Company> updateCompany(Integer id, Company company) {
+        Company company1= new Company();
+        company1.setCompany_name(company.getCompany_name());
+
+        company1.setLocation(company.getLocation());
+
+        repoCompany.save(company1);
+        return ResponseEntity.ok().body(company1);
     }
 }

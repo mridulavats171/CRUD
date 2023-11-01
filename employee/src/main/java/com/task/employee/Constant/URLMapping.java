@@ -8,6 +8,8 @@ public class URLMapping {
     public static final String COMPANY= "/api/v1/company";
     public static final String PROJECTS= "/api/v1/projects";
     public static final String FINDPROJECTS= "/api/v1/findprojects";
+    public static final String DEPARTMENT= "/api/v1/department";
+
 
 
 

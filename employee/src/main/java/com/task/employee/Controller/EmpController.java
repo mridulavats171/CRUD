@@ -6,6 +6,12 @@ import com.task.employee.Domain.Employee;
 import com.task.employee.Exception.GeneratedException;
 import com.task.employee.Repository.EmployeeRepo;
 import com.task.employee.Service.ServiceEmployee;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.tags.Tags;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,7 +22,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
+@OpenAPIDefinition(
+        info = @Info(
+                title = "Employees",
+                version = "0.0",
+                description = "My Employee API")
+)
+@Tag(name = "Employee controller")
 @RestController
 @RequestMapping(URLMapping.EMPLOYEES)
 public class EmpController {
@@ -30,17 +42,21 @@ public class EmpController {
         super();
         this.serviceEmployee = serviceEmployee;
     }
+@Tag(name = "List of employees")
+@Operation(summary = "Get a list of all the employees", description = "Get a list of all the employees")
 
     @GetMapping
     public ResponseEntity<List<Employee>> getEmployees() {
         return serviceEmployee.findAll();
     }
 
+    @Operation(summary = "Delete an employee", description = "Delete an employee using id")
     @DeleteMapping("/{id}")
     public String deleteEmployee(@PathVariable Integer id) {
         return serviceEmployee.deleteEmployee(id);
     }
 
+    @Operation(summary = "List of employee")
     @GetMapping(URLMapping.FINDEMP)
     public List<EmployeeDTO> getEmployeeinfo() {
 
@@ -48,11 +64,13 @@ public class EmpController {
                 .collect(Collectors.toList());
     }
 
+    @Operation(summary = "Add an employee")
       @PostMapping
       public String addEmployee( @RequestBody Employee employee)  {
         return serviceEmployee.addEmployee(employee);
     }
-
+    @Tag(name = "List of employees")
+    @Operation(summary = "Search employee using name or id")
     @GetMapping("/{identifier}")
     public ResponseEntity<List<Employee>> getEmployee(@PathVariable String identifier, @RequestParam(value = "type", required = false) String type) {
         if ("name".equals(type)) {
@@ -65,7 +83,7 @@ public class EmpController {
         }
     }
 
-
+    @Operation(summary = "Edit employee using id")
     @PutMapping("/{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable Integer id, @RequestBody Employee employee) throws GeneratedException {
         return serviceEmployee.updateEmployee(id, employee);
