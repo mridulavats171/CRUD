@@ -5,5 +5,10 @@ public class URLMapping {
 
     public static final String FINDEMP= "/api/v1/findemp";
 
+    public static final String COMPANY= "/api/v1/company";
+    public static final String PROJECTS= "/api/v1/projects";
+    public static final String FINDPROJECTS= "/api/v1/findprojects";
+
+
 
 }
