@@ -1,0 +1,84 @@
+[33mcommit 6cd783b156168c2082f6fd545baa4c282200f97b[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Mridula Vats <mridula@mridula.vats>
+Date:   Tue Oct 31 16:20:11 2023 +0530
+
+    added swagger dependency
+
+[33mcommit 061d4bb099d880370404ed1439d6b7c929dd81da[m
+Author: Mridula Vats <mridula@mridula.vats>
+Date:   Tue Oct 31 15:25:24 2023 +0530
+
+    before swagger dependencies
+
+[33mcommit e8ff03719e1f0f9310d44f33d434957c98358d9e[m
+Author: Mridula Vats <mridula@mridula.vats>
+Date:   Tue Oct 31 10:09:23 2023 +0530
+
+    V1
+
+[33mcommit 75a2173e7a71594bc07a7605dbdbc551799fbfaf[m
+Author: Mridula Vats <mridula@mridula.vats>
+Date:   Mon Oct 30 21:17:47 2023 +0530
+
+    before-params
+
+[33mcommit 1c6475fa57a7d4a4d333768dd70a6dfe27353c54[m
+Merge: 6ef982b 046b1c6
+Author: Mridula Vats <mridula@mridula.vats>
+Date:   Mon Oct 30 20:41:53 2023 +0530
+
+    Merge branch 'practice' into main
+
+[33mcommit 046b1c62cba43b5dfbf32373b71d7bb1ae2922d5[m[33m ([m[1;31morigin/practice[m[33m)[m
+Author: Mridula Vats <mridula@mridula.vats>
+Date:   Mon Oct 30 17:41:27 2023 +0530
+
+    commit after mapping
+
+[33mcommit 6ef982b9e12da59706d2c1887323b421107936e2[m
+Merge: 79a1372 64c203f
+Author: mridulavats171 <148615240+mridulavats171@users.noreply.github.com>
+Date:   Mon Oct 30 14:54:13 2023 +0530
+
+    Merge pull request #2 from mridulavats171/practice
+    
+    practice second commit
+
+[33mcommit 64c203f2c014490099fdb2ca4725a7095439c471[m
+Author: Mridula Vats <mridula@mridula.vats>
+Date:   Mon Oct 30 14:50:07 2023 +0530
+
+    practice second commit
+
+[33mcommit 79a137271f3fb7332ce2670a22849a57ce65a700[m
+Merge: 4040164 0687ffe
+Author: mridulavats171 <148615240+mridulavats171@users.noreply.github.com>
+Date:   Mon Oct 30 12:56:48 2023 +0530
+
+    Merge pull request #1 from mridulavats171/practice
+    
+    first practice commit
+
+[33mcommit 0687ffe2f89ee484f1cd0b61d92e89eb2150a893[m
+Author: Mridula Vats <mridula@mridula.vats>
+Date:   Mon Oct 30 12:43:59 2023 +0530
+
+    first practice commit
+
+[33mcommit 4040164a7ebf1db9bf43a9f565cf7a8933c23830[m
+Author: Mridula Vats <mridula@mridula.vats>
+Date:   Fri Oct 27 20:29:07 2023 +0530
+
+    third commit
+
+[33mcommit 9761e24c1b4c4b950e6591c43cbb726a2acc3e5f[m
+Author: Mridula Vats <mridula@mridula.vats>
+Date:   Fri Oct 27 16:20:43 2023 +0530
+
+    27th
+
+[33mcommit 0c4a25d38ddf46aa2dcfa991e9c42f19b21c5f1b[m
+Author: Mridula Vats <mridula@mridula.vats>
+Date:   Fri Oct 27 15:34:42 2023 +0530
+
+    first commit
