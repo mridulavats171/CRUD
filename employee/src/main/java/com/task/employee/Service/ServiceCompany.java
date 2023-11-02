@@ -17,8 +17,12 @@ public class ServiceCompany {
     }
 
     public String deleteCompany(Integer id) {
-        repoCompany.deleteById(id);
-        return "sucess";
+        if(repoCompany.existsById(id)){
+            repoCompany.deleteById(id);
+            return "sucess";
+        }else
+            return HttpStatus.METHOD_NOT_ALLOWED.getReasonPhrase();
+
     }
 
     public String addCompany(Company company) {
