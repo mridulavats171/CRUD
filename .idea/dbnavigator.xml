@@ -41,10 +41,24 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="f477a84a-24b4-4fce-b071-8e2776c885cd" dataset="leetcode.users" active-filter-id="4bcb344f-b38e-4ea0-9c5d-9fe416c440b2">
+      <filter id="4bcb344f-b38e-4ea0-9c5d-9fe416c440b2" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="id" operator="=" value="" active="true" />
+      </filter>
+    </filter-actions>
+    <filter-actions connection-id="f477a84a-24b4-4fce-b071-8e2776c885cd" dataset="performance_schema.users" active-filter-id="" />
     <filter-actions connection-id="f477a84a-24b4-4fce-b071-8e2776c885cd" dataset="emp.employee_projects_table" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
+  </component>
+  <component name="DBNavigator.Project.MethodExecutionManager">
+    <method-browser />
+    <execution-history>
+      <group-entries value="true" />
+      <execution-inputs />
+    </execution-history>
+    <argument-values-cache />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
@@ -212,7 +226,7 @@
           <object-type name="CONSTRAINT" enabled="true" />
           <object-type name="DATASET TRIGGER" enabled="true" />
           <object-type name="DATABASE TRIGGER" enabled="true" />
-          <object-type name="SYNONYM" enabled="false" />
+          <object-type name="SYNONYM" enabled="true" />
           <object-type name="SEQUENCE" enabled="true" />
           <object-type name="PROCEDURE" enabled="true" />
           <object-type name="FUNCTION" enabled="true" />
