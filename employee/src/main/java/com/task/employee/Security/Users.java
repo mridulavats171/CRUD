@@ -19,7 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "users")
+@Table(name = "Users")
 public class Users implements UserDetails {
     @Id
     @GeneratedValue
