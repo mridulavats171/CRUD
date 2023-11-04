@@ -22,7 +22,6 @@ import java.util.List;
 public class Users implements UserDetails {
     @Id
     @GeneratedValue
-
     private Integer id;
     private String first_name;
     private String last_name;
