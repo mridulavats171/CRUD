@@ -1,6 +1,5 @@
 package com.task.employee.Security;
 
-import com.task.employee.token.Token;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -23,6 +22,7 @@ import java.util.List;
 public class Users implements UserDetails {
     @Id
     @GeneratedValue
+
     private Integer id;
     private String first_name;
     private String last_name;
@@ -32,8 +32,7 @@ public class Users implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany(mappedBy = "user")
-    private List<Token> tokens;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
