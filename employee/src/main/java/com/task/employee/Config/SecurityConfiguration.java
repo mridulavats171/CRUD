@@ -17,14 +17,14 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfiguration {
-    public static final String STRING = "/api/v1/**";
+    public static final String STRING = "/api/v1/auth";
     private JwtAuthenticationFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
         .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests( req ->
-                req.requestMatchers(STRING).permitAll().requestMatchers("/api/v1/auth/**").permitAll()
+                req.requestMatchers(STRING).permitAll()
                 .anyRequest()
                 .authenticated()
                 )

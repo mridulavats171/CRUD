@@ -1,6 +1,6 @@
 package com.task.employee.auth;
 
-import com.task.employee.Security.UserRepository;
+import com.task.employee.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

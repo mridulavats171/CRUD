@@ -2,7 +2,6 @@ package com.task.employee.Service;
 
 import com.task.employee.Domain.Company;
 import com.task.employee.Repository.RepoCompany;
-import com.task.employee.auth.AuthenticationController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

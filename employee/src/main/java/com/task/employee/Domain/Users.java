@@ -1,6 +1,6 @@
-package com.task.employee.Security;
+package com.task.employee.Domain;
 
-import io.swagger.v3.oas.annotations.media.Schema;
+import com.task.employee.Security.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,9 +23,17 @@ public class Users implements UserDetails {
     @Id
     @GeneratedValue
     private Integer id;
-    private String first_name;
-    private String last_name;
+
+    @Column(name = "first_name")
+    private String firstname;
+
+    @Column(name = "last_name")
+    private String lastname;
+
+    @Column(name= "email")
     private String email;
+
+    @Column(name = "password")
     private String password;
 
     @Enumerated(EnumType.STRING)
@@ -66,4 +74,5 @@ public class Users implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }

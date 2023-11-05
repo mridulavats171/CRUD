@@ -51,8 +51,11 @@
     <filter-actions connection-id="f477a84a-24b4-4fce-b071-8e2776c885cd" dataset="emp.employee_projects_table" active-filter-id="" />
     <filter-actions connection-id="f477a84a-24b4-4fce-b071-8e2776c885cd" dataset="emp.token" active-filter-id="" />
     <filter-actions connection-id="f477a84a-24b4-4fce-b071-8e2776c885cd" dataset="emp.projects" active-filter-id="" />
-    <filter-actions connection-id="f477a84a-24b4-4fce-b071-8e2776c885cd" dataset="emp.Users" active-filter-id="" />
-    <filter-actions connection-id="030e9218-0c27-4ea1-a1ef-d5b9d1f88cdb" dataset="mysql.general_log" active-filter-id="" />
+    <filter-actions connection-id="f477a84a-24b4-4fce-b071-8e2776c885cd" dataset="emp.Users" active-filter-id="07732397-cc9c-4978-8d0a-bd9904ea2ec5">
+      <filter id="07732397-cc9c-4978-8d0a-bd9904ea2ec5" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="id" operator="=" value="" active="true" />
+      </filter>
+    </filter-actions>
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />

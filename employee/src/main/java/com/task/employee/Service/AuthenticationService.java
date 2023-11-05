@@ -1,24 +1,17 @@
-package com.task.employee.auth;
+package com.task.employee.Service;
 
-import com.task.employee.Config.JwtAuthenticationFilter;
-import com.task.employee.Config.JwtService;
-import com.task.employee.Config.SecurityConfiguration;
-import com.task.employee.Controller.EmpController;
-import com.task.employee.DTO.EmployeeDTO;
 import com.task.employee.Security.Role;
-import com.task.employee.Security.UserRepository;
-import com.task.employee.Security.Users;
+import com.task.employee.Repository.UserRepository;
+import com.task.employee.Domain.Users;
 
+import com.task.employee.auth.AuthenticationRequest;
+import com.task.employee.auth.AuthenticationResponse;
+import com.task.employee.auth.RegisterRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-
-import static org.springframework.security.core.userdetails.User.*;
 
 @Service
 @RequiredArgsConstructor
@@ -30,11 +23,13 @@ public class AuthenticationService {
 
     public AuthenticationResponse register(RegisterRequest request) {
         var user = Users.builder()
+                .firstname(request.getFirstname())
+                .lastname(request.getLastname())
                 .role(Role.USER)
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .build();
-       var savedUser = repository.save(user);
+       repository.save(user);
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
                 .token(jwtToken)

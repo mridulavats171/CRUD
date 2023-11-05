@@ -1,4 +1,4 @@
-package com.task.employee.Config;
+package com.task.employee.Service;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -16,7 +16,7 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
-    private static final String SECRET_KEY = "FD8B3DF39DF41B82614AE41EB4F5C";
+    private static final String SECRET_KEY = "966BAE09D555861938D19C7C7376A96BED2E99B7AA37D5472E4420358CBB2E76";
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }
@@ -59,6 +59,7 @@ public String generateToken(UserDetails userDetails){
                 .getBody();
 
     }
+
 
     private Key getSignInKey() {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
