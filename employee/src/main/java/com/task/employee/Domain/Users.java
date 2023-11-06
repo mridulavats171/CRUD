@@ -3,11 +3,17 @@ package com.task.employee.Domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+
+@Data
 @Setter
 @Getter
 @Entity
 @Table(name = "userinfo")
-@Data
     public class Users {
         @Id
         @GeneratedValue
