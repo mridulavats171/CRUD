@@ -48,6 +48,7 @@
     </filter-actions>
     <filter-actions connection-id="f477a84a-24b4-4fce-b071-8e2776c885cd" dataset="performance_schema.users" active-filter-id="" />
     <filter-actions connection-id="f477a84a-24b4-4fce-b071-8e2776c885cd" dataset="emp.employee_projects_table" active-filter-id="" />
+    <filter-actions connection-id="f477a84a-24b4-4fce-b071-8e2776c885cd" dataset="emp.Users" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />

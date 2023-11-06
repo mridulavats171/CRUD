@@ -10,6 +10,7 @@ public class URLMapping {
     public static final String FINDPROJECTS= "/api/v1/findprojects";
     public static final String DEPARTMENT= "/api/v1/department";
 
+    public static final String USERS= "/api/v1/users";
 
 
 
