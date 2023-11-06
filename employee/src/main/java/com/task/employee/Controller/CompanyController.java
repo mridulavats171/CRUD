@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(URLMapping.COMPANY)
-@Tag(name = "Company APIs")
+@Tag(name = "Company Controller")
 public class CompanyController {
     @Autowired
     ServiceCompany serviceCompany;

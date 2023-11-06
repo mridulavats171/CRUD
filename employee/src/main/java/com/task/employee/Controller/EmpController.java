@@ -42,7 +42,6 @@ public class EmpController {
         super();
         this.serviceEmployee = serviceEmployee;
     }
-@Tag(name = "List of employees")
 @Operation(summary = "Get a list of all the employees", description = "Get a list of all the employees")
 
     @GetMapping
@@ -69,19 +68,26 @@ public class EmpController {
       public String addEmployee( @RequestBody Employee employee)  {
         return serviceEmployee.addEmployee(employee);
     }
-    @Tag(name = "List of employees")
-    @Operation(summary = "Search employee using name or id")
-    @GetMapping("/{identifier}")
-    public ResponseEntity<List<Employee>> getEmployee(@PathVariable String identifier, @RequestParam(value = "type", required = false) String type) {
-        if ("name".equals(type)) {
-            return serviceEmployee.getEmpByName(identifier);
-        } else if ("id".equals(type)) {
-                int id = Integer.parseInt(identifier);
-                return serviceEmployee.findEmpById(id);
-        } else {
-                return new ResponseEntity<>(new ArrayList<>(), HttpStatus.BAD_REQUEST);
-        }
+//
+@Operation(summary = "find employee by id")
+@GetMapping("/{id}")
+    public ResponseEntity<List<Employee>> getById(@PathVariable Integer id){
+        return serviceEmployee.findEmpById(id);
     }
+//
+//    @Tag(name = "List of employees")
+//    @Operation(summary = "Search employee using name or id")
+//    @GetMapping("/{identifier}")
+//    public ResponseEntity<List<Employee>> getEmployee(@PathVariable String identifier, @RequestParam(value = "type", required = false) String type) {
+//        if ("name".equals(type)) {
+//            return serviceEmployee.getEmpByName(identifier);
+//        } else if ("id".equals(type)) {
+//                int id = Integer.parseInt(identifier);
+//                return serviceEmployee.findEmpById(id);
+//        } else {
+//                return new ResponseEntity<>(new ArrayList<>(), HttpStatus.BAD_REQUEST);
+//        }
+//    }
 
     @Operation(summary = "Edit employee using id")
     @PutMapping("/{id}")

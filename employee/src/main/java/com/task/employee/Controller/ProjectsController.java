@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
-@Tag(name = "Project APIs")
+@Tag(name = "Project Controller")
 @RestController
 public class ProjectsController {
     @Autowired
