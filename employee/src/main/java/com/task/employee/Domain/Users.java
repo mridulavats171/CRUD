@@ -16,6 +16,8 @@ import java.util.Collection;
 import java.util.List;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Setter
 @Getter
 @Entity
@@ -23,7 +25,7 @@ import java.util.List;
 @Table(name = "userinfo")
     public class Users implements UserDetails {
         @Id
-        @GeneratedValue
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Integer id;
 
         @Column(name = "first_name")
@@ -35,7 +37,7 @@ import java.util.List;
         @Column(name= "email")
         private String email;
 
-        @Column(name = "password")
+        @Column(name = "password", length = 128)
         private String password;
 
         @Enumerated(EnumType.STRING)
