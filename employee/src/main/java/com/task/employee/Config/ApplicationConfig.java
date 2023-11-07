@@ -18,7 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @RequiredArgsConstructor
 public class ApplicationConfig {
 
-    private UsersRepository repository;
+    private final UsersRepository repository;
     @Bean
     public UserDetailsService userDetailsService(){
         return username -> repository.findByEmail(username)
@@ -40,7 +40,7 @@ public class ApplicationConfig {
     }
 
     @Bean
-    private PasswordEncoder passwordEncoder() {
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
