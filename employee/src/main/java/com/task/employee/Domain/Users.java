@@ -14,7 +14,7 @@ import lombok.Setter;
 @Getter
 @Entity
 @Table(name = "userinfo")
-    public class Users {
+    public class Users implements {
         @Id
         @GeneratedValue
         private Integer id;
@@ -33,8 +33,6 @@ import lombok.Setter;
 
         @Enumerated(EnumType.STRING)
         private Role role;
-
-
 
     }
 
