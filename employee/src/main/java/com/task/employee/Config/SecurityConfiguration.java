@@ -1,5 +1,6 @@
 package com.task.employee.Config;
 
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +11,9 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import static io.swagger.v3.oas.annotations.enums.SecuritySchemeIn.HEADER;
+import static io.swagger.v3.oas.annotations.enums.SecuritySchemeType.HTTP;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
 
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
@@ -28,7 +32,7 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req ->
                 req.requestMatchers(
-                        WHITE_LIST_URL, "/swagger-ui/**", "/api/v1/employees/**"
+                        WHITE_LIST_URL, "/swagger-ui/**", "/javainuse-openapi/**"
                 )
                 .permitAll()
                 .anyRequest()

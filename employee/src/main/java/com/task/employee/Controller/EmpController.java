@@ -6,10 +6,13 @@ import com.task.employee.Domain.Employee;
 import com.task.employee.Exception.GeneratedException;
 import com.task.employee.Repository.EmployeeRepo;
 import com.task.employee.Service.ServiceEmployee;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.Authorization;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import org.modelmapper.ModelMapper;
@@ -22,6 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+@ApiOperation(value = "", authorizations = { @Authorization(value="JWT")})
 @OpenAPIDefinition(
         info = @Info(
                 title = "Employees",
