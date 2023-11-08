@@ -55,20 +55,20 @@ public class ServiceEmployee {
         return "success";
     }
 
-    public ResponseEntity<Employee> updateEmployee(Integer id, Employee employeeRequest) throws GeneratedException {
-        Employee employee = null;
-            employee = employeeRepo.findById(id)
-                    .orElseThrow(() -> new GeneratedException("Post id"));
-
-        employee.setCompany_id(employeeRequest.getCompany_id());
-        employee.setName(employeeRequest.getName());
-        employee.setDepartment_id(employeeRequest.getDepartment_id());
-        employee.setProjects_id(employeeRequest.getProjects_id());
-        employee.setSalary(employeeRequest.getSalary());
-
-         employeeRepo.save(employee);
-         return ResponseEntity.ok().body(employee);
-    }
+//    public ResponseEntity<Employee> updateEmployee(Integer id, Employee employeeRequest) throws GeneratedException {
+//        Employee employee = null;
+//            employee = employeeRepo.findById(id)
+//                    .orElseThrow(() -> new GeneratedException("Post id"));
+//
+//        employee.setCompany_id(employeeRequest.getCompany_id());
+//        employee.setName(employeeRequest.getName());
+//        employee.setDepartment_id(employeeRequest.getDepartment_id());
+//        employee.setProjects_id(employeeRequest.getProjects_id());
+//        employee.setSalary(employeeRequest.getSalary());
+//
+//         employeeRepo.save(employee);
+//         return ResponseEntity.ok().body(employee);
+//    }
 
     public ResponseEntity<List<Employee>> findEmpById(int id) {
         Optional<Employee> optionalEmployee = employeeRepo.findById(id);
@@ -88,20 +88,4 @@ public class ServiceEmployee {
         }
     }
 
-
-//    public Employee updateEmployee(Integer id, Employee employeeRequest) {
-//        Employee employee = null;
-//        try {
-//            employee = employeeRepo.findById(id)
-//                    .orElseThrow(() -> new GeneratedException("Post id"));
-//        } catch (GeneratedException e) {
-//            throw new RuntimeException(e);
-//        }
-//
-//        employee.setCompany_id(employeeRequest.getCompany_id());
-//        employee.setName(employeeRequest.getName());
-//        employee.setDepartment_id(employeeRequest.getDepartment_id());
-//
-//        return employeeRepo.save(employee);
-//    }
 }

@@ -8,10 +8,11 @@ import lombok.Data;
 public class EmployeeDTO {
 
 
-        private int id;
+
         private String name;
         private Integer company_id;
 
         private int department_id;
+        private int salary;
 
 }
