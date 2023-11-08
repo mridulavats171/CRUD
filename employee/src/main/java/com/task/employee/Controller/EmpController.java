@@ -94,19 +94,17 @@ public class EmpController {
     public ResponseEntity<Employee> updateEmployee(@PathVariable Integer id, @RequestBody Employee employee) throws GeneratedException {
         return serviceEmployee.updateEmployee(id, employee);
     }
+    @Operation(summary = "Edit employee using id")
+    @PutMapping("/{id}")
+    public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable Integer id, @RequestBody EmployeeDTO employeeDTO) {
 
-//    @PutMapping("/{id}")
-//    public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable Integer id, @RequestBody EmployeeDTO employeeDTO) {
-//
-//        // convert DTO to Entity
-//        Employee employeeRequest = modelMapper.map(employeeDTO, Employee.class);
-//
-//        Employee employee = serviceEmployee.updateEmployee(id, employeeRequest);
-//
-//        // entity to DTO
-//        EmployeeDTO employeeResponse = modelMapper.map(employee, EmployeeDTO.class);
-//
-//        return ResponseEntity.ok().body(employeeResponse);
-//    }
+
+        Employee employee = serviceEmployee.updatedEmployee(id, employeeDTO);
+
+        // entity to DTO
+        EmployeeDTO employeeResponse = modelMapper.map(employee, EmployeeDTO.class);
+
+        return ResponseEntity.ok().body(employeeResponse);
+    }
 }
 
