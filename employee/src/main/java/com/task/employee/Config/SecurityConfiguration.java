@@ -28,7 +28,7 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req ->
                 req.requestMatchers(
-                        WHITE_LIST_URL
+                        WHITE_LIST_URL, "/swagger-ui/**", "/api/v1/employees/**"
                 )
                 .permitAll()
                 .anyRequest()
