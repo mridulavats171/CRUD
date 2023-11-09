@@ -7,6 +7,7 @@ import com.task.employee.Domain.Employee;
 import com.task.employee.Domain.Projects;
 import com.task.employee.Service.ServiceProjects;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
+@SecurityRequirement(name = "Bearer Authentication")
 @Tag(name = "Project Controller")
 @RestController
 public class ProjectsController {

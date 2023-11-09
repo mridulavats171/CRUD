@@ -2,6 +2,7 @@ package com.task.employee.Config;
 
 
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -32,7 +33,7 @@ public class SwaggerConfig {
         return new ApiKey("JWT", AUTHORIZATION_HEADER, "header");
     }
 
-    @Bean
+
     private List<SecurityContext> securityContexts(){
         return Arrays.asList(SecurityContext.builder().securityReferences(securityReferences())
                 .build());

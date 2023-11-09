@@ -1,6 +1,7 @@
 package com.task.employee.Service;
 
 import com.task.employee.DTO.EmployeeDTO;
+import com.task.employee.Exception.EmployeeNotFoundException;
 import com.task.employee.Repository.EmployeeRepo;
 import com.task.employee.Domain.Employee;
 import com.task.employee.Exception.GeneratedException;
@@ -60,8 +61,8 @@ public class ServiceEmployee {
         Employee employee = null;
         try {
             employee = employeeRepo.findById(id)
-                    .orElseThrow(() -> new GeneratedException("Post id"));
-        } catch (GeneratedException e) {
+                    .orElseThrow(() -> new EmployeeNotFoundException("Post id"));
+        } catch (EmployeeNotFoundException e) {
             throw new RuntimeException(e);
         }
 
@@ -88,13 +89,9 @@ public class ServiceEmployee {
 //         return ResponseEntity.ok().body(employee);
 //    }
 
-    public ResponseEntity<List<Employee>> findEmpById(int id) {
-        Optional<Employee> optionalEmployee = employeeRepo.findById(id);
-        if (optionalEmployee.isPresent()) {
-            return ResponseEntity.ok(Collections.singletonList(optionalEmployee.get()));
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public Employee findEmpById(int id) {
+        return employeeRepo.findById(id)
+                .orElseThrow(() -> new EmployeeNotFoundException("Employee corresponding to the given ID does not exist"));
 
     }
     public ResponseEntity<List<Employee>> getEmpByName(String identifier) {

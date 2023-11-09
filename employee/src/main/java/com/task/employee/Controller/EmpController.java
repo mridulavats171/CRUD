@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@ApiOperation(value = "", authorizations = { @Authorization(value="JWT")})
+@SecurityRequirement(name = "Bearer Authentication")
 @OpenAPIDefinition(
         info = @Info(
                 title = "Employees",
@@ -76,7 +76,7 @@ public class EmpController {
 //
 @Operation(summary = "find employee by id")
 @GetMapping("/{id}")
-    public ResponseEntity<List<Employee>> getById(@PathVariable Integer id){
+    public Employee getById(@PathVariable Integer id){
         return serviceEmployee.findEmpById(id);
     }
 //
