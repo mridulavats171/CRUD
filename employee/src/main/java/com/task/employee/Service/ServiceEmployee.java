@@ -2,6 +2,7 @@ package com.task.employee.Service;
 
 import com.task.employee.DTO.EmployeeDTO;
 import com.task.employee.Exception.EmployeeNotFoundException;
+import com.task.employee.Exception.InvalidEntryException;
 import com.task.employee.Repository.EmployeeRepo;
 import com.task.employee.Domain.Employee;
 import com.task.employee.Exception.GeneratedException;
@@ -36,9 +37,9 @@ public class ServiceEmployee {
               employeeRepo.deleteById(id);
               return "Employee deleted successfully.";
           } else {
-              return "failed";
+              throw new EmployeeNotFoundException("Employee does not exist");
           }
-      } catch (EmptyResultDataAccessException ex) {
+      } catch (EmployeeNotFoundException ex) {
             return "Employee with ID " + id + " not found.";
         }
     }
@@ -53,8 +54,9 @@ public class ServiceEmployee {
 }
 
     public String addEmployee(Employee employee) {
-        employeeRepo.save(employee);
-        return "success";
+
+            employeeRepo.save(employee);
+            return "success";
     }
 
     public Employee updatedEmployee(Integer id, EmployeeDTO employeeRequest) {
