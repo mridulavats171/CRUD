@@ -20,4 +20,11 @@ public class ControllerAdvice {
                 .status(HttpStatus.BAD_REQUEST)
                 .body(exception.getMessage());
     }
+
+    @ExceptionHandler({ProjectNotFoundException.class})
+    public ResponseEntity<Object> handleProjectNotFoundException(ProjectNotFoundException exception){
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(exception.getMessage());
+    }
 }

@@ -9,7 +9,11 @@ drop table projects;
 insert into projects values (id, project_name),
 (1, "mobile app"),
 (2, "web page"),
-(3, "tv app")
+(3, "tv app"),
+(4, "music application"),
+(5, "ai");
+
 
 
 select * from projects;
+use       emp;

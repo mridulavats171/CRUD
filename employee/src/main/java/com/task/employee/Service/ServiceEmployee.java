@@ -54,9 +54,12 @@ public class ServiceEmployee {
 }
 
     public String addEmployee(Employee employee) {
+        if(employeeExists(employee.getId())){
+            throw new InvalidEntryException("Employee already exists");
 
-            employeeRepo.save(employee);
-            return "success";
+        }
+        employeeRepo.save(employee);
+        return "Employee successfully saved";
     }
 
     public Employee updatedEmployee(Integer id, EmployeeDTO employeeRequest) {
