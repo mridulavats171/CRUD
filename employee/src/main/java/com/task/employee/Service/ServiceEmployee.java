@@ -6,6 +6,7 @@ import com.task.employee.Exception.InvalidEntryException;
 import com.task.employee.Repository.EmployeeRepo;
 import com.task.employee.Domain.Employee;
 import com.task.employee.Exception.GeneratedException;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,10 @@ public class ServiceEmployee {
 
     @Autowired
     EmployeeRepo employeeRepo;
+
+    @Autowired
+    private ModelMapper modelMapper;
+
     public ResponseEntity<List<Employee>> findAll(){
         try{
             return new ResponseEntity<>(employeeRepo.findAll(), HttpStatus.OK);
@@ -30,6 +35,9 @@ public class ServiceEmployee {
         }
     return new ResponseEntity<>(new ArrayList<>(), HttpStatus.BAD_REQUEST);
     }
+//    public List<Employee> findAll(){
+//        return employeeRepo.findAll();
+//    }
 
     public String deleteEmployee(Integer id) {
       try {
@@ -79,20 +87,24 @@ public class ServiceEmployee {
         return employeeRepo.save(employee);
     }
 
-//    public ResponseEntity<Employee> updateEmployee(Integer id, Employee employeeRequest) throws GeneratedException {
-//        Employee employee = null;
-//            employee = employeeRepo.findById(id)
-//                    .orElseThrow(() -> new GeneratedException("Post id"));
-//
-//        employee.setCompany_id(employeeRequest.getCompany_id());
-//        employee.setName(employeeRequest.getName());
-//        employee.setDepartment_id(employeeRequest.getDepartment_id());
-//        employee.setProjects_id(employeeRequest.getProjects_id());
-//        employee.setSalary(employeeRequest.getSalary());
-//
-//         employeeRepo.save(employee);
-//         return ResponseEntity.ok().body(employee);
-//    }
+    public String updateEmployee(Integer id, Employee employeeRequest) throws GeneratedException {
+        Employee employee = null;
+            employee = employeeRepo.findById(id)
+                    .orElseThrow(() -> new GeneratedException("Post id"));
+        try{
+            employee.setCompany_id(employeeRequest.getCompany_id());
+            employee.setName(employeeRequest.getName());
+            employee.setDepartment_id(employeeRequest.getDepartment_id());
+            employee.setProjects_id(employeeRequest.getProjects_id());
+            employee.setSalary(employeeRequest.getSalary());
+
+            employeeRepo.save(employee);
+            return "employee updated";
+        } catch (InvalidEntryException e){
+            throw new InvalidEntryException("Failed");
+        }
+        }
+
 
     public Employee findEmpById(int id) {
         return employeeRepo.findById(id)

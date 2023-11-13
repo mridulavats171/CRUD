@@ -1,5 +1,9 @@
-package com.task.employee.auth;
+package com.task.employee.Controller;
 
+import com.task.employee.auth.AuthenticationRequest;
+import com.task.employee.auth.AuthenticationResponse;
+import com.task.employee.auth.AuthenticationService;
+import com.task.employee.auth.RegisterRequest;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

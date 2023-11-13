@@ -13,6 +13,8 @@ public interface EmployeeRepo extends JpaRepository<Employee, Integer> {
     List<Employee> name(String name);
 
     List<Employee> findByname(String name);
+    boolean existsById( Integer id);
+
 
 //
 //    @Query("SELECT e FROM Employees e WHERE e.Company_id = ?1")

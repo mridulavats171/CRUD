@@ -101,7 +101,7 @@ public class EmpController {
 //    }
     @Operation(summary = "Edit employee using id")
     @PutMapping("/{id}")
-    public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable Integer id, @RequestBody EmployeeDTO employeeDTO) {
+    public ResponseEntity<EmployeeDTO> updatedEmployee(@PathVariable Integer id, @RequestBody EmployeeDTO employeeDTO) {
 
 
         Employee employee = serviceEmployee.updatedEmployee(id, employeeDTO);
@@ -111,5 +111,12 @@ public class EmpController {
 
         return ResponseEntity.ok().body(employeeResponse);
     }
+    @Operation(summary = "Edit employee using id")
+    @PutMapping("edit/{id}")
+    public String updateEmployee(@PathVariable Integer id, @RequestBody Employee employee1) throws GeneratedException {
+            return   serviceEmployee.updateEmployee(id, employee1);
+    }
+
+
 }
 
