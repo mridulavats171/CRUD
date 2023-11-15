@@ -13,4 +13,8 @@ public class AuthenticationResponse {
 
     private String token;
 
+    private Integer HttpStatus;
+
+    private String message;
+
 }
