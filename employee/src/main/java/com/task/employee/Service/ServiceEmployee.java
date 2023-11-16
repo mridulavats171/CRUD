@@ -7,6 +7,7 @@ import com.task.employee.Repository.EmployeeRepo;
 import com.task.employee.Domain.Employee;
 import com.task.employee.Exception.GeneratedException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,6 +54,8 @@ public class ServiceEmployee {
     return employeeRepo.findAll();
 }
 
+
+    @Cacheable(value = "Employee", key = "#id")
     public String addEmployee(Employee employee) {
         if(employeeExists(employee.getId())){
             throw new InvalidEntryException("Employee already exists");
@@ -94,6 +97,7 @@ public class ServiceEmployee {
 //         return ResponseEntity.ok().body(employee);
 //    }
 
+    @Cacheable(value = "Employee", key = "#id")
     public Employee findEmpById(int id) {
         return employeeRepo.findById(id)
                 .orElseThrow(() -> new EmployeeNotFoundException("Employee corresponding to the given ID does not exist"));
